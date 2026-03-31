@@ -1,0 +1,5 @@
+• Validação da Parte 4: Responda de forma direta à pergunta teórica: Com base na saída do
+terminal, como é possível comprovar que o Job 2 e o Job 3 rodaram em paralelo?
+
+É possível comprovar que o Job 2 e o Job 3 rodaram em paralelo porque, após a conclusão do setup-e-lint, ambos aparecem no mesmo Stage 1 na listagem (act -l), indicando que não possuem dependência entre si. Durante a execução do pipeline, os logs dos dois jobs aparecem intercalados no terminal, mostrando que foram executados ao mesmo tempo. Além disso, o act inicia cada job em contêineres temporários separados, o que confirma a execução simultânea.
+
