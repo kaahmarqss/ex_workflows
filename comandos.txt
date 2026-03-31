@@ -1,0 +1,36 @@
+    1  mkdir meu-projeto-ci
+    2  cd meu-projeto-ci/
+    3  git init
+    4  nano README.md
+    5  git status
+    6  touch README.md
+    7  git status
+    8  git add README.md 
+    9  git commit -m "commit inicial"
+   10  mkdir .github/workflows
+   11  mkdir -p .github/workflows
+   12  cd .github/workflows/
+   13  mkdir 01-hello-local.yml.
+   14  touch 01-hello-local.yml
+   15  nano 01-hello-local.yml
+   16  cd ..
+   17  cd ..
+   18  act -l
+   19  act -W .github/workflows/01-hello-local.yml
+   20  act -W .github/workflows/01-hello-local.yml | grep "Iniciando testes locais\|v\|Finalizado com sucesso!"
+   21  act -l
+   22  act -l
+   23  act -W .github/workflows/01-hello-local.yml | grep "Iniciando testes locais\|v\|Finalizado com sucesso! teste2"
+   24  cd .github/workflows/
+   25  nano 02-pipeline-principal.yml
+   26  cd ..
+   27  cd ..
+   28  act -n -W .github/workflows/02-pipeline-principal.yml
+   29  act -l -W .github/workflows/02-pipeline-principal.yml
+   30  act push -W .github/workflows/02-pipeline-principal.yml -P ubuntu-latest=node:slim
+   31  act push -W .github/workflows/02-pipeline-principal.yml -j scan-de-seguranca -P ubuntu-latest=node:slim
+   32  act push -W .github/workflows/02-pipeline-principal.yml -j scan-de-seguranca -P ubuntu-latest=node:slim
+   33  act push -W .github/workflows/02-pipeline-principal.yml -P ubuntu-latest=node:slim
+   34  act -l
+   35  act -n
+   36  history 50 > comandos.txt
